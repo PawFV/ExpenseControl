@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp9
 {
-    public partial class FormListTrackingMoney : Form
+    public partial class ListTrackingMoney : Form
     {
-        public FormListTrackingMoney()
+        public ListTrackingMoney()
         {
             InitializeComponent();
         }

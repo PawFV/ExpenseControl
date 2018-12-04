@@ -10,7 +10,7 @@ namespace WindowsFormsApp9
     public static class StaticForms
     {
         // Static Forms.
-        public static FormListTrackingMoney FormListTracking { get; } = new FormListTrackingMoney();
+        public static ListTrackingMoney ListTrackingForm { get; } = new ListTrackingMoney();
         public static AddGasto GastoForm { get; } = new AddGasto();
         public static AddIngresos IngresoForm { get; } = new AddIngresos();
     }
@@ -18,23 +18,24 @@ namespace WindowsFormsApp9
     // Static values!
     public static class ControlIngresos
     {
-        private  static float _TotIngreso;
-        private  static float _TotGasto;
-        private  static float _TOTAL;
+        private  static double _IngresosDisponibles;
+        private  static double _TotGasto;
+        private  static double _TOTAL;
          
-        static public float AddGasto
+        static public double AddGasto
         {
             get { return _TotGasto; }
-            set { _TotIngreso = _TotIngreso - value; _TotGasto = _TotGasto + value; }
+            set { _IngresosDisponibles = _IngresosDisponibles - value; _TotGasto = _TotGasto + value; }
+               
         }
         
-        static public float AddIngreso
+        static public double AddIngreso
         {
-            get { return _TotIngreso; }
-            set { _TotIngreso = _TotIngreso + value; }
+            get { return _IngresosDisponibles; }
+            set { _IngresosDisponibles = _IngresosDisponibles + value; }
         }
 
-        static public float TOTAL
+        static public double TOTAL
         {
             get { return _TOTAL; }
             set { _TOTAL = _TOTAL + value; }

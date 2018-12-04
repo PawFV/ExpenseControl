@@ -82,11 +82,11 @@
       <DependentUpon>AddGasto.cs</DependentUpon>
     </Compile>
     <Compile Include="Diccionario.cs" />
-    <Compile Include="FormListTrackingMoney.cs">
+    <Compile Include="ListTrackingMoney.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormListTrackingMoney.Designer.cs">
-      <DependentUpon>FormListTrackingMoney.cs</DependentUpon>
+    <Compile Include="ListTrackingMoney.Designer.cs">
+      <DependentUpon>ListTrackingMoney.cs</DependentUpon>
     </Compile>
     <Compile Include="PanelPrincipal.cs">
       <SubType>Form</SubType>
@@ -105,8 +105,8 @@
     <EmbeddedResource Include="AddGasto.resx">
       <DependentUpon>AddGasto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormListTrackingMoney.resx">
-      <DependentUpon>FormListTrackingMoney.cs</DependentUpon>
+    <EmbeddedResource Include="ListTrackingMoney.resx">
+      <DependentUpon>ListTrackingMoney.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PanelPrincipal.resx">
       <DependentUpon>PanelPrincipal.cs</DependentUpon>

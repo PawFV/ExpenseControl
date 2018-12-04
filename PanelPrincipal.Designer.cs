@@ -156,6 +156,7 @@
             this.Name = "PanelPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Control de ingresos";
+            this.Load += new System.EventHandler(this.PanelPrincipal_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

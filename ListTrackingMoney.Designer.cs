@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp9
 {
-    partial class FormListTrackingMoney
+    partial class ListTrackingMoney
     {
         /// <summary>
         /// Required designer variable.

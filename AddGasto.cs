@@ -10,7 +10,7 @@ namespace WindowsFormsApp9
     public partial class AddGasto : Form
     {
         //SQL SOURCE
-        public string data = "Data Source=DESKTOP-7B08VIG\\SQLEXPRESS;Initial Catalog = Connection; Integrated Security = True";
+        private string data = "Data Source=DESKTOP-7B08VIG\\SQLEXPRESS;Initial Catalog = Connection; Integrated Security = True";
         bool check = true;
 
         public AddGasto()
@@ -26,28 +26,28 @@ namespace WindowsFormsApp9
             
             try
             {
-                //Check if text is float.
-                bool textBoxGastoToFloat = float.TryParse(textBoxGasto.Text, out float txtFloatConverted);
+                //Check if text is Double.
+                bool textBoxGastoToDouble = double.TryParse(textBoxGasto.Text, out double txtDoubleConverted);
 
                 //"ValidatingConditions" Method shows MessageBox for each invalid conditions, and returns false.
-                if (ValidatingConditions(textBoxGastoToFloat, listBox1.SelectedIndex, txtFloatConverted))
+                if (ValidatingConditions(textBoxGastoToDouble, listBox1.SelectedIndex, txtDoubleConverted))
                 { 
                     // Adding expense then clears textBox.
-                    ControlIngresos.AddGasto = txtFloatConverted;
+                    ControlIngresos.AddGasto = txtDoubleConverted;
                     ingresoLabel.Text = "$" + ControlIngresos.AddIngreso.ToString("0.00");
                     gastoLabel.Text = "$" + ControlIngresos.AddGasto.ToString("0.00");
                     textBoxGasto.Clear();
 
                     //Adds the expense to detailed listViews.
                     ListViewItem detailedItems = new ListViewItem(DateTime.Now.ToString());
-                    detailedItems.SubItems.Add(txtFloatConverted.ToString("0.00"));
+                    detailedItems.SubItems.Add(txtDoubleConverted.ToString("0.00"));
                     detailedItems.SubItems.Add(listBox1.SelectedItem.ToString());
-                    StaticForms.FormListTracking.listViewTracking.Items.Add(detailedItems);
+                    StaticForms.ListTrackingForm.listViewTracking.Items.Add(detailedItems);
 
                     //Update items on ''%ofExpensesList'' 
-                    StaticForms.FormListTracking.listViewWasted.Items.Clear();
+                    StaticForms.ListTrackingForm.listViewWasted.Items.Clear();
                     Porcentajes updatelistView = new Porcentajes();
-                    updatelistView.AddItemToDicc(listBox1.SelectedItem.ToString(), txtFloatConverted);
+                    updatelistView.AddItemToDicc(listBox1.SelectedItem.ToString(), txtDoubleConverted);
                     updatelistView.AddItemPercentageTolistViewWasted();
 
 
@@ -55,7 +55,7 @@ namespace WindowsFormsApp9
                     SqlConnection con = new SqlConnection(data);
                     con.Open();
 
-                    string q = "INSERT INTO Gastos(Date,Egreso,Tipo)VALUES('" + DateTime.Now.ToString() + "','" + txtFloatConverted.ToString() + "','" + listBox1.SelectedItem + "')";
+                    string q = "INSERT INTO Gastos(Fecha,Egreso,Tipo)VALUES('" + DateTime.Now.ToString() + "','" + txtDoubleConverted + "','" + listBox1.SelectedItem + "')";
                     SqlCommand cmd = new SqlCommand(q, con);
                     cmd.ExecuteNonQuery();
                     con.Close();
@@ -71,9 +71,9 @@ namespace WindowsFormsApp9
         }
 
         
-        public bool ValidatingConditions(bool validatedFloat,int listIndex, float txtConverted)
+        public bool ValidatingConditions(bool validatedDouble,int listIndex, double txtConverted)
         {
-            if (!validatedFloat)
+            if (!validatedDouble)
             { MessageBox.Show("¡Los valores ingresados no son correctos o están vacíos!");
                 return false;
             }
